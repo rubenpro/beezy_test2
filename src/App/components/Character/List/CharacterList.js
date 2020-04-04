@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 
 import Grid from '@material-ui/core/Grid';
@@ -8,8 +8,8 @@ import ListStyles from './CharacterList.css';
 import Loader from '../../Loader/Loader';
 import API_BB from '../../../utils/BreakingBadAPI';
 import CharacterListItem from './CharacterListItem';
-import AutocompleteSelect from '../../Filter/AutocompleteSelect';
-import ViewOptions from '../../Options/ViewOptions';
+import AutocompleteSelect from './Filters/Filter/AutocompleteSelect';
+import ViewOptions from './Filters/Options/ViewOptions';
 
 function CharacterList() {
   const classes = ListStyles();
@@ -19,7 +19,7 @@ function CharacterList() {
 
   useEffect(function getCharacters() {
     setIsLoadingCharacters(true);
-    API_BB.getCharacterList(12)
+    API_BB.getCharacterList(4)
       .then((characterList) => {
         setCharacters(characterList);
         setFilteredList(characterList);
@@ -33,9 +33,10 @@ function CharacterList() {
 
   const handleChange = (e, value, reason) => {
     if (value) {
-      setFilteredList(characters.filter((item) => item.name === value.name));
+      setFilteredList(filteredList.filter((item) => item.name === value.name));
     } else {
       setFilteredList(characters);
+      /* setFilteredList(_.orderBy(characters, ['name'], ['desc'])); */
     }
   };
 
@@ -47,7 +48,7 @@ function CharacterList() {
         </Grid>
         <Grid id="options" item sm={6} xs={12} className={classes.options}>
           <ViewOptions
-            characters={characters}
+            characters={filteredList}
             handleOrderBy={handleOrder}
             handleSortBy={handleSort}
           />
