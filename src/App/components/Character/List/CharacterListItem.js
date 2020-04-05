@@ -14,6 +14,7 @@ import ListItemStyles from './CharacterListItem.css';
 
 const CharacterListItem = ({ character }) => {
   const classes = ListItemStyles();
+
   return (
     <Fragment key={character.char_id}>
       <Grid item xl={3} lg={3} md={4} sm={6} xs={12}>

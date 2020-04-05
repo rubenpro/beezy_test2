@@ -10,6 +10,8 @@ import API_BB from '../../../utils/BreakingBadAPI';
 import CharacterListItem from './CharacterListItem';
 import AutocompleteSelect from './Filters/Filter/AutocompleteSelect';
 import ViewOptions from './Filters/Options/ViewOptions';
+import Header from '../../Header/Header';
+import Footer from '../../Footer/Footer';
 
 function CharacterList() {
   const classes = ListStyles();
@@ -41,29 +43,33 @@ function CharacterList() {
   };
 
   return (
-    <Container>
-      <Grid container justify="space-between" alignItems="center">
-        <Grid id="filters" item sm={6} xs={12} className={classes.options}>
-          <AutocompleteSelect characters={characters} onChange={handleChange} />
+    <>
+      <Header />
+      <Container>
+        <Grid container justify="space-between" alignItems="center">
+          <Grid id="filters" item sm={6} xs={12} className={classes.options}>
+            <AutocompleteSelect characters={characters} onChange={handleChange} />
+          </Grid>
+          <Grid id="options" item sm={6} xs={12} className={classes.options}>
+            <ViewOptions
+              characters={filteredList}
+              handleOrderBy={handleOrder}
+              handleSortBy={handleSort}
+            />
+          </Grid>
         </Grid>
-        <Grid id="options" item sm={6} xs={12} className={classes.options}>
-          <ViewOptions
-            characters={filteredList}
-            handleOrderBy={handleOrder}
-            handleSortBy={handleSort}
-          />
-        </Grid>
-      </Grid>
-      {isLoadingCharacters ? (
-        <Loader />
-      ) : (
-        <Grid container spacing={6} className={classes.list}>
-          {filteredList.map((character) => (
-            <CharacterListItem key={character.char_id} character={character} />
-          ))}
-        </Grid>
-      )}
-    </Container>
+        {isLoadingCharacters ? (
+          <Loader />
+        ) : (
+          <Grid container spacing={6} className={classes.list}>
+            {filteredList.map((character) => (
+              <CharacterListItem key={character.char_id} character={character} />
+            ))}
+          </Grid>
+        )}
+      </Container>
+      <Footer />
+    </>
   );
 }
 

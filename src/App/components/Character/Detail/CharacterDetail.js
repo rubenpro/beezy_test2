@@ -8,6 +8,8 @@ import API_BB from '../../../utils/BreakingBadAPI';
 import Loader from '../../Loader/Loader';
 import CharacterDetailCard from './CharacterDetailCard';
 import DetailStyles from './CharacterDetail.css';
+import Header from '../../Header/Header';
+import Footer from '../../Footer/Footer';
 
 function CharacterDetail({ match: { params } }) {
   const classes = DetailStyles();
@@ -22,17 +24,21 @@ function CharacterDetail({ match: { params } }) {
   }, [id]);
 
   return (
-    <Container>
-      {isLoadingCharacter ? (
-        <Loader />
-      ) : (
-        <Grid container className={classes.container}>
-          <Grid item className={classes.item}>
-            <CharacterDetailCard character={character} />
+    <>
+      <Header />
+      <Container>
+        {isLoadingCharacter ? (
+          <Loader />
+        ) : (
+          <Grid container className={classes.container}>
+            <Grid item className={classes.item}>
+              <CharacterDetailCard character={character} />
+            </Grid>
           </Grid>
-        </Grid>
-      )}
-    </Container>
+        )}
+      </Container>
+      <Footer />
+    </>
   );
 }
 

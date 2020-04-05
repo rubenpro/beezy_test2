@@ -22,3 +22,4 @@ I choosed the Breaking Bad API as I love TV Shows and this is one of my favourit
 - Add an option to choose how many characters to show at once
 - Add pagination for the main page (list)
 - Add pagination for the detail page
+- Add a function that take an object of the Periodic Table of the Elements to automatically build the Breaking Bad style box titles. 
