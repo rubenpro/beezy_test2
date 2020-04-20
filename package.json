@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rubenpro/beezy_test.git"
+    "url": "git+https://github.com/rubenpro/beezy_test2.git"
   },
   "author": "Rubén Pacheco Rodríguez",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rubenpro/beezy_test/issues"
+    "url": "https://github.com/rubenpro/beezy_test2/issues"
   },
-  "homepage": "https://github.com/rubenpro/beezy_test#readme",
+  "homepage": "https://github.com/rubenpro/beezy_test2#readme",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",

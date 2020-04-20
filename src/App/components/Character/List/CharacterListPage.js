@@ -15,6 +15,8 @@ function CharacterListPage() {
   const [characters, setCharacters] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [isLoadingCharacters, setIsLoadingCharacters] = useState(false);
+  const [sort, setSort] = useState('');
+  const [order, setOrder] = useState('');
   const state = {
     classes,
     characters,
@@ -24,7 +26,7 @@ function CharacterListPage() {
 
   useEffect(function getCharacters() {
     setIsLoadingCharacters(true);
-    API_BB.getCharacterList(4)
+    API_BB.getCharacterList(8)
       .then((characterList) => {
         setCharacters(characterList);
         setFilteredList(characterList);
@@ -33,15 +35,20 @@ function CharacterListPage() {
       .then(() => setIsLoadingCharacters(false));
   }, []);
 
-  const handleOrder = (fL) => setFilteredList(fL);
-  const handleSort = (fL) => setFilteredList(fL);
+  const handleOrder = (fL, orderType) => {
+    setOrder(orderType);
+    setFilteredList(fL);
+  };
+  const handleSort = (fL, sortType) => {
+    setSort(sortType);
+    setFilteredList(fL);
+  };
 
   const handleChange = (e, value, reason) => {
     if (value) {
       setFilteredList(filteredList.filter((item) => item.name === value.name));
     } else {
-      setFilteredList(characters);
-      /* setFilteredList(_.orderBy(characters, ['name'], ['desc'])); */
+      setFilteredList(_.orderBy(characters, [sort], [order]));
     }
   };
 

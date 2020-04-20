@@ -17,7 +17,7 @@ function ViewOptions({ handleOrderBy, handleSortBy, characters }) {
 
   const onSort = (sortType, open) => {
     setSort(sortType);
-    handleSortBy(_.orderBy(characters, [sortType], [order]));
+    handleSortBy(_.orderBy(characters, [sortType], [order]), sortType);
     setIsOpen(open);
   };
 
@@ -25,7 +25,7 @@ function ViewOptions({ handleOrderBy, handleSortBy, characters }) {
 
   const handleToggleOrder = (newOrder) => {
     setOrder(newOrder);
-    handleOrderBy(_.orderBy(characters, sort, newOrder));
+    handleOrderBy(_.orderBy(characters, sort, newOrder), newOrder);
   };
 
   const handleClose = (open) => setIsOpen(open);

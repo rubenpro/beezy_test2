@@ -15,7 +15,7 @@
     "function-paren-newline": "off", // Incompatible with prettier
     "no-plusplus": "off",
     "space-before-function-paren": 0, // Incompatible with prettier
-    "max-len": ["error", 100, 2, { "ignoreUrls": true, "ignoreComments": true}],
+    "max-len": ["error", 100, 2, { "ignoreUrls": true, "ignoreComments": true }],
     "no-unused-vars": 0,
     "no-console": "warn", // airbnb is using warn
     "no-alert": "warn", // airbnb is using warn
@@ -35,7 +35,7 @@
         "every": ["id"]
       }
     }],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
     "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
